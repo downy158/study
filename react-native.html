@@ -1,0 +1,446 @@
+<!doctype html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+ <title>reveal.js</title>
+
+ <link rel="stylesheet" href="css/reveal.css">
+ <link rel="stylesheet" href="css/theme/black.css">
+
+ <!-- Theme used for syntax highlighting of code -->
+ <link rel="stylesheet" href="lib/css/zenburn.css">
+
+ <!-- Printing and PDF exports -->
+ <script>
+ var link = document.createElement( 'link' );
+ link.rel = 'stylesheet';
+ link.type = 'text/css';
+ link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+ document.getElementsByTagName( 'head' )[0].appendChild( link );
+ </script>
+</head>
+<body>
+ <div class="reveal">
+  <div class="slides">
+   <section>
+    <h3>React <font color="orange">Native</font></h3>
+    <div>LEARN ONCE, WRITE ANYWHERE</div>
+   </section>
+
+   <section>
+    <h3>
+     <font color="orange">오해</font>
+    </h3>
+    <div>
+     <img src="images/react-native/sun.png" style="background-color:#222222;border:0px" width="50"/>
+     <img src="images/react-native/sun.png" style="background-color:#222222;border:0px" width="50"/>
+     <img src="images/react-native/sun.png" style="background-color:#222222;border:0px" width="50"/>
+     <img src="images/react-native/sun.png" style="background-color:#222222;border:0px" width="50"/>
+     <img src="images/react-native/sun.png" style="background-color:#222222;border:0px" width="50"/>
+    </div>
+    <div><small>Hybrid web app?</small></div>
+    <div><small>100%?</small></div>
+   </section>
+
+
+   <section>
+    <h3><font color="orange">단점</font></h3>
+    <div><small>성숙도</small></div>
+    <div><small>모든 기능(X)</small></div>
+   </section>
+
+   <section>
+    <h3><font color="orange">그러나..</font></h3>
+    <div><code>npm-check-updates -u</code></div>
+    <div>
+     <img src="images/react-native/release.png"/>
+    </div>
+   </section>
+
+   <section>
+
+    <h3><font color="orange">Version</font></h3>
+    <div>
+     <img src="images/react-native/react-version.png" />
+    </div>
+   </section>
+
+
+   <section>
+    <h3><font color="orange">모든 기능(X)</font></h3>
+    <div><small> -> Interface 제공</small></div>
+    <iframe src="https://facebook.github.io/react-native/docs/native-components-ios.html" width="100%" height="700"></iframe>
+   </section>
+
+
+   <section>
+    <h3><font color="orange"> Opensource </font></h3>
+    <iframe src="https://react.parts/native" width="100%" height="700"></iframe>
+   </section>
+
+
+   <section>
+    <h3><font color="orange">React(JS)</font></h3>
+   </section>
+
+   <section>
+    <h3><font color="orange">Virtual</font> DOM</h3>
+   </section>
+
+   <section>
+    <h3><font color="orange">(Reusable)</font> Component?</h3>
+   </section>
+
+   <section>
+    <h3><font color="orange">HTML</font></h3>
+    <div>
+     <img src="images/react-native/side-menu-item.png" width="400"/>
+    </div>
+    <pre><code class="hljs" data-trim contenteditable>
+     <ul>
+      <li>
+       <a data-href="/pushes">
+        <i class="icon-gajago-alram"></i> 알림
+       </a>
+      </li>
+     </ul>
+    </code>
+   </pre>
+  </section>
+  <section>
+   <h3>HTML &gt;&gt; <font color="orange">Component</font></h3>
+   <pre>
+    <code class="hljs JavaScript" data-trim>
+class SideMenuItem extends Component {
+ render() {
+
+  var {
+   url, icon, title
+  } = this.props;
+
+  return (
+    <li>
+     <a data-href={url}>
+      <i className={"icon-gajago-" + icon}></i> {title}
+     </a>
+    </li>
+  );
+ }
+}
+    </code>
+   </pre>
+  </section>
+
+  <section>
+   <h3>HTML &gt;&gt; <font color="orange">Component</font></h3>
+   <pre>
+    <code class="hljs JavaScript" data-trim>
+class SideMenu extends Component {
+ render() {
+  return (
+    <ul>
+     <SideMenuItem url="/pushes" icon="alarm" title="알림"/>
+     <SideMenuItem url="/orders" icon="list" title="공지사항"/>
+     <SideMenuItem url="/qnas" icon="qna" title="자주 묻는 질문"/>
+     <SideMenuItem url="/zeropass" icon="zeropass" title="VIP 존"/>
+    </ul>
+  );
+ }
+}
+    </code>
+   </pre>
+  </section>
+  <section>
+   <h3>HTML &gt;&gt; <font color="orange">Component</font></h3>
+   <pre>
+    <code class="hljs JavaScript" data-trim>
+     class Layout extends Component {
+      render() {
+       return (
+         <div>
+          <LeftPanel>
+           <Logo/>
+           <LoginBox/>
+           <SideMenu/>
+          </LeftPanel>
+          <RightPanel>
+           생략...
+          </RightPanel>
+         </div>
+       );
+      }
+     }
+    </code>
+   </pre>
+  </section>
+
+  <section>
+   <h3><font color="orange">HTML to JSX</font></h3>
+   <div><small>http://magic.reactjs.net/htmltojsx.htm</small></div>
+   <iframe src="http://magic.reactjs.net/htmltojsx.htm" width="100%" height="400"></iframe>
+  </section>
+
+  <section>
+   <h3>React <font color="orange">Native</font></h3>
+   <pre>
+    <code class="hljs JavaScript" data-trim>
+class WhyReactNativeIsSoGreat extends Component {
+ render() {
+  return (
+    <View>
+     <Text>
+      If you like React on the web, youll like React Native.
+     </Text>
+    </View>
+  );
+ }
+}
+    </code>
+   </pre>
+  </section>
+
+  <section>
+   <h3>View</h3>
+   <table width="80%">
+    <thead>
+     <tr>
+      <th>React</th>
+      <th><font color="orange">React Native</font></th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>&lt;div&gt;</td>
+      <td><font color="orange">&lt;View&gt;</font></td>
+     </tr>
+     <tr>
+      <td>&lt;span&gt;</td>
+      <td><font color="orange">&lt;Text&gt;</font></td>
+     </tr>
+     <tr>
+      <td>&lt;li&gt;, &lt;ul&gt;</td>
+      <td><font color="orange">&lt;ListView&gt;</font></td>
+     </tr>
+     <tr>
+      <td>&lt;img&gt;</td>
+      <td><font color="orange">&lt;Image&gt;</font></td>
+     </tr>
+    </tbody>
+   </table>
+  </section>
+
+  <section>
+   <h3><font color="orange">Bridge</font></h3>
+  </section>
+
+  <section>
+   <h3><font color="orange">Bridge</font></h3>
+   <div>
+    <img src="images/react-native/bridge.png" style="background-color:#222222;border:0px" width="80%"/>
+   </div>
+  </section>
+
+  <section>
+   <h3><font color="orange">Hot Loading</font></h3>
+   <div><small>Hot module replacement</small></div>
+   <iframe width="640" height="315" src="https://www.youtube.com/embed/2uQzVi-KFuc" frameborder="0" allowfullscreen></iframe>
+  </section>
+
+  <section>
+   <h3><font color="orange">Debugging</font></h3>
+   <div><small>Log Console</small></div>
+   <div>
+     <pre><code>
+       $ react-native log-ios
+       $ react-native log-android
+     </code></pre>
+   </div>
+   <div><small>Chrome Developer Tools </small></div>
+  </section>
+
+  <section>
+   <h3><font color="orange">Styling</font></h3>
+   <div><small>CSS 구현체</small></div>
+   <pre>
+    <code class="hljs JavaScript" data-trim>
+const styles = StyleSheet.create({
+ backgroundColor: '#F5FCFF',
+ fontSize: '16px'
+});
+
+class WhyReactNativeIsSoGreat extends Component {
+ render() {
+  return (
+  <View>
+   <Text style={styles}>
+    If you like React on the web, youll like React Native.
+   </Text>
+  </View>
+  );
+ }
+}
+    </code>
+   </pre>
+  </section>
+
+
+  <section>
+   <h3>Base <font color="orange">Component</font></h3>
+   <iframe src="https://appetize.io/embed/p8mafjj1hgkv96dcwgqr1qwppw?device=iphone4s&scale=100&autoplay=false&orientation=portrait&deviceColor=black" width="370" height="733"  frameborder="0" scrolling="no"></iframe>
+  </section>
+
+  <section>
+   <h3><font color="orange">Who</font>'s using React Native?</h3>
+   <div>
+     <iframe src="https://facebook.github.io/react-native/showcase.html" width="100%" height="700"  frameborder="0" scrolling="no"></iframe>
+
+   </div>
+  </section>
+
+  <section>
+   <h3><font color="orange">Stack</font></h3>
+   <div><small>Router</small></div>
+   <div><small>Redux</small></div>
+   <div><small>Codepush</small></div>
+  </section>
+
+
+    <section>
+     <h3><font color="orange">Router</font></h3>
+     <pre>
+      <code class="hljs JavaScript" data-trim>
+export default class GajagoApp extends Component {
+  render() {
+    return (
+      <Router>
+        <Scene key="modal" component={Modal} >
+          <Scene key="root">
+            <Scene key="home" component={Home} title="Home"/>
+            <Scene key="login" component={Login} title="Login"/>
+            <Scene key="cart" direction="vertical">
+               <Scene key="cartModal1" direction="vertical" component={Cart1} title="Cart1" />
+               <Scene key="cartModal2" direction="vertical" component={Cart2} title="Cart2" />
+               <Scene key="cartModal3" direction="vertical" component={Cart3} title="Cart3" />
+            </Scene>
+          </Scene>
+        </Scene>
+      </Router>
+    );
+  }
+}
+
+
+  </code>
+  </pre>
+    </section>
+
+  <section>
+   <h3><font color="orange">Router</font></h3>
+   <pre>
+    <code class="hljs JavaScript" data-trim>
+import { Actions } from 'react-native-router-flux';
+export default class Home extends Component {
+  _onPress() {
+
+    Actions.cart();
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text onPress={this._onPress}>Home</Text>
+      </View>
+    );
+  }
+}
+</code>
+</pre>
+  </section>
+
+  <section>
+   <h3><font color="orange">Redux</font></h3>
+   <pre>
+    <code class="hljs JavaScript" data-trim>
+class SideMenuItem extends Component {
+
+ constructor(props) {
+  super(props);
+  this.state = {
+   title: props.title
+  };
+ }
+
+ _onClick(){
+
+  this.setState({
+   title : 'clicked'
+  });
+ }
+
+ render() {
+  return (
+  <li>
+   <a data-href={url}>
+    <i className={"icon-gajago-" + icon}></i> {title}
+   </a>
+  </li>
+  );
+ }
+}
+    </code>
+   </pre>
+  </section>
+
+  <section>
+   <h3><font color="orange">Redux</font></h3>
+   <div>
+    <img src="images/react-native/without-redux.png" style="background-color:#222222;border:0px" width="50%" />
+   </div>
+  </section>
+
+  <section>
+   <h3><font color="orange">Redux</font></h3>
+   <div>
+    <img src="images/react-native/with-redux.png" style="background-color:#222222;border:0px" width="50%" />
+   </div>
+  </section>
+
+  <section>
+   <h3><font color="orange">Codepush</font></h3>
+   <iframe src="https://microsoft.github.io/code-push/" width="100%" height="733"  frameborder="0" scrolling="no"></iframe>
+  </section>
+
+  <section>
+   <h3>Examples</h3>
+   <div><small>http://www.reactnativeexpress.com</small></div>
+   <div><small>https://react.rocks/tag/ReactNative</small></div>
+   <div><small>http://reactnative.cc/20-12-2016.html</small></div>
+   <div><small>https://github.com/facebook/react-native/tree/master/Examples/UIExplorer</small></div>
+  </section>
+ </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+// More info https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+ history: true,
+
+ // More info https://github.com/hakimel/reveal.js#dependencies
+ dependencies: [
+  { src: 'plugin/markdown/marked.js' },
+  { src: 'plugin/markdown/markdown.js' },
+  { src: 'plugin/notes/notes.js', async: true },
+  { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad({
+
+
+  }); } }
+ ]
+});
+</script>
+</body>
+</html>

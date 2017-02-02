@@ -70,7 +70,7 @@
           </aside>
         </section>
 
-        <section data-background="/images/payment/iamport-main.png">
+        <section data-background="images/payment/iamport-main.png">
           <p>
             <div class="fragment  background-black-font">.........</div>
             <div class="fragment  background-black-font">
@@ -165,7 +165,7 @@ IMP.request_pay({
             <font color="orange">Intent filter (android)</font>
           </h3>
           <div>
-            <img src="/images/payment/intent-filter.png" height="500"/>
+            <img src="images/payment/intent-filter.png" height="500"/>
           </div>
 
           <aside class="notes">
@@ -201,7 +201,7 @@ IMP.request_pay({
             <font color="orange">Bridge</font>
           </h3>
           <div>
-            <img src="/images/payment/bridge.png" height="500"/>
+            <img src="images/payment/bridge.png" height="500"/>
           </div>
 
           <aside class="notes">
@@ -240,7 +240,7 @@ location.href = 'shinhan-sr-ansimclick://';
         <section>
           <h3>URL은 실행 가능한 것인가?</h3>
           <div>
-            <img src="/images/payment/unknown-url-scheme.png" height="500"/>
+            <img src="images/payment/unknown-url-scheme.png" height="500"/>
           </div>
           <aside class="notes">
             어플리케이션 사용자든 제작자든 누구도 이 화면을 그대로 보길 원하지 않을겁니다.
@@ -316,7 +316,7 @@ webview.addEventListener('onurlchange', function(webview){
         <section>
           <h3>비동기(필터링 X)</h3>
           <div>
-            <img src="/images/payment/async-event.png" height="400"/>
+            <img src="images/payment/async-event.png" height="400"/>
           </div>
           <div>
             https://facebook.github.io/react-native/docs/native-modules-android.html
@@ -354,7 +354,7 @@ webview.addEventListener('onurlchange', function(webview){
           <h3>IOS - 스크립트 로딩 허용</h3>
           <div>Info.plist (Property List) 수정</div>
           <div>
-            <img src="/images/payment/plist1.png"/>
+            <img src="images/payment/plist1.png"/>
           </div>
           <aside class="notes">
             react native로 프로젝트를 생성하면 생기는 각 플랫폼별 디렉토리에서 ios디렉토리로 이동하여 info.plist를 다음과 같이 편집하여 외부의 스크립트 즉 각 pg사별 로딩 스크립트들을 실행할 수 있도록 합니다.
@@ -370,7 +370,7 @@ webview.addEventListener('onurlchange', function(webview){
             <font color="orange">iOS 10 &gt;&gt;&gt; 차단</font>
           </div>
           <div>
-            <img src="/images/payment/plist2.png"/>
+            <img src="images/payment/plist2.png"/>
           </div>
           <aside class="notes">
             WHITELIST등록은 ios 9부터 생긴개념인데 10 버전에서 강제화된 내용입니다. PG사에서 제공하는 모든 카드앱 스킴을 미리알고 여기에 등록해야합니다. 아임포트에서 내용은 제공을 해줍니다.
@@ -380,7 +380,7 @@ webview.addEventListener('onurlchange', function(webview){
         <section>
           <h3>IOS - postMessage 패치</h3>
           <div>
-            <img src="/images/payment/fetch-post-message.png" height="500"/>
+            <img src="images/payment/fetch-post-message.png" height="500"/>
           </div>
           <aside class="notes">
             아직 정확한 이유파악은 안되나 pg사의 스크립트가 react native의 브릿지역할을 하는 postMessage api를 override하는 경우가 있는 것 같습니다. 기본적으로 브릿지를 시도할 경우 다음과 같은 빨간에러를 만날 수 있습니다.
@@ -446,7 +446,7 @@ render () => (
           </aside>
         </section>
 
-        <section data-background="/images/payment/hell2.jpg">
+        <section data-background="images/payment/hell2.jpg">
           <h3>ANDROID - HELL</h3>
           <aside class="notes">
             지옥의 시작입니다.
@@ -456,7 +456,7 @@ render () => (
         <section>
           <h3>react-native-webview-android</h3>
           <div>
-            <img src="/images/payment/react-native-webview-android.png"/>
+            <img src="images/payment/react-native-webview-android.png"/>
           </div>
           <aside class="notes">
             안드로이드에서 이벤트가 잘 발생하지 않는 문제때문에 고민을 하다가 찾은 모듈입니다.
@@ -551,7 +551,7 @@ render () => (
         <section>
           <h3>Maintainer</h3>
           <div>
-            <img src="/images/payment/dont-need.png" height="500"/>
+            <img src="images/payment/dont-need.png" height="500"/>
           </div>
           <aside class="notes">
             엎친데 덮친격으로 메인테이너는 이젠 내꺼쓰지말고 리액트네이티브에서 제공하는 웹뷰가 더 좋으니까 그것을 쓰라고 이야기하고 있습니다.
@@ -574,7 +574,7 @@ render () => (
         <section>
           <h3>export android native module</h3>
           <div>
-            <img src="/images/payment/react-native-module1.png" height="400"/>
+            <img src="images/payment/react-native-module1.png" height="400"/>
           </div>
           <aside class="notes">
             메뉴얼에는 자기들이 모듈 export 인터페이스를 왜 만들었는지 변명을 하고 있습니다.
@@ -584,7 +584,7 @@ render () => (
         <section>
           <h3>export android native module</h3>
           <div>
-            <img src="/images/payment/react-native-module2.png" width="1000"/>
+            <img src="images/payment/react-native-module2.png" width="1000"/>
           </div>
           <aside class="notes">
             기본적으로 toast 모듈을 example로 제공하고 있는데 한번 따라해보면 생각보다 어렵지 않다고 느낄 수 있습니다.
@@ -611,7 +611,7 @@ render () => (
             https://github.com/jeongjuwon/react-native-iamport
           </div>
           <div>
-            <img src="/images/payment/github.png"/>
+            <img src="images/payment/github.png"/>
           </div>
           <aside class="notes">
             해당 모듈은 github에 공개되어있습니다.
@@ -624,7 +624,7 @@ render () => (
             https://npmjs.com/react-native-iamport
           </div>
           <div>
-            <img src="/images/payment/npm.png"/>
+            <img src="images/payment/npm.png"/>
           </div>
           <aside class="notes">
             npm에도 등록이 된 상태입니다.
@@ -634,7 +634,7 @@ render () => (
         <section>
           <h3>react-native-iamport</h3>
           <div>
-            <img src="/images/payment/react-native-iamport.png"/>
+            <img src="images/payment/react-native-iamport.png"/>
           </div>
           <aside class="notes">
             실제 프로젝트 내에선 다음처럼 간단하게 사용이 가능합니다.

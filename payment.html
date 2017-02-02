@@ -1,0 +1,729 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? 'css/print/pdf.css'
+        : 'css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/jsplumb/dist/js/jsplumb.min.js"></script>
+    <style>
+      .background-black-font {
+
+        padding-left: 10px;
+        padding-right: 10px;
+        background-color: #000000;
+      }
+      .round-box {
+        display: inline-block;
+        background-color: #cccccc;
+        color: #111111;
+        padding: 20px !important;
+        font-size: 20px !important;
+        width: 150px;
+      }
+
+      table.table-25px {
+
+        font-size: 25px;
+        text-align: center;
+      }
+
+      table.table-25px td,
+      table.table-25px th {
+
+        text-align: center;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-background="http://cdn.pcwallart.com/images/lord-of-the-rings-gollum-wallpaper-3.jpg">
+          <h3>React Native
+            <font color="orange">I'mport 연동</font>
+          </h3>
+          <div>- 뜻밖의 여정 -</div>
+
+          <aside class="notes">
+            오늘 소개드릴 내용은 미쳐 아임포트를 믿었던 제가 생각지 못한 삽질기입니다.
+          </aside>
+        </section>
+
+        <section data-background="/images/payment/iamport-main.png">
+          <p>
+            <div class="fragment  background-black-font">.........</div>
+            <div class="fragment  background-black-font">
+              <font color="orange">
+                -_-;;
+              </font>
+            </div>
+            <div class="fragment background-black-font">ㅋㅋㅋㅋㅋㅋㅋㅋ</div>
+          </p>
+
+          <aside class="notes">
+            아임포트는 쉬운 결제연동을 지원합니다.
+          </aside>
+        </section>
+
+        <section id="react-native-with-iamport">
+
+          <div id="diagram-react-native-app" class="round-box" style="position:absolute;top:115px;left:0px;">App</div>
+
+          <div id="diagram-react-native-webview" class="round-box" style="position:absolute;top:115px;left:230px;">WebView</div>
+
+          <div id="diagram-react-native-iamport" class="round-box" style="position:absolute;top:115px;left:460px;">I'mport</div>
+
+          <div id="diagram-react-native-pg1" class="round-box" style="position:absolute;top:0px;left:690px;">나이스페이</div>
+          <div id="diagram-react-native-pg2" class="round-box" style="position:absolute;top:115px;left:690px;">카카오</div>
+          <div id="diagram-react-native-pg3" class="round-box" style="position:absolute;top:230px;left:690px;">페이코</div>
+
+          <aside class="notes">
+            앱내에 웹뷰를 사용하여 아임포트의 스크립트를 실행하면 각 PG사별 결제앱이 사용되고 결제가 취소되거나 완료되면 결과를 받을 수 있는 인터페이스가 존재합니다.
+          </aside>
+        </section>
+
+        <section>
+
+          <pre><code class="hljs">
+var IMP = window.IMP; // 생략가능
+IMP.init('iamport'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+
+/* 중략 */
+
+//onclick, onload 등 원하는 이벤트에 호출합니다
+IMP.request_pay({
+    pg : 'inicis', // version 1.1.0부터 지원.
+    pay_method : 'card',
+    merchant_uid : 'merchant_' + new Date().getTime(),
+    name : '주문명:결제테스트',
+    amount : 14000,
+    buyer_email : 'iamport@siot.do',
+    buyer_name : '구매자이름',
+    buyer_tel : '010-1234-5678',
+    buyer_addr : '서울특별시 강남구 삼성동',
+    buyer_postcode : '123-456',
+    m_redirect_url : 'https://www.yourdomain.com/payments/complete',
+    app_scheme : 'iamportapp'
+}, function(rsp) {
+    if ( rsp.success ) {
+        var msg = '결제가 완료되었습니다.';
+        msg += '고유ID : ' + rsp.imp_uid;
+        msg += '상점 거래ID : ' + rsp.merchant_uid;
+        msg += '결제 금액 : ' + rsp.paid_amount;
+        msg += '카드 승인번호 : ' + rsp.apply_num;
+    } else {
+        var msg = '결제에 실패하였습니다.';
+        msg += '에러내용 : ' + rsp.error_msg;
+    }
+
+    alert(msg);
+});
+          </code></pre>
+          <aside class="notes">
+            해당 스크립트는 아임포트를 실행하는 스크립트입니다. pg 와 pay_method 파라미터 그리고 그외의 구매내용에 대한 정보를 넘기면 두가지 방법으로 리턴을 하게 됩니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>두가지 방법</h3>
+          <pre><code class="hljs">IMP.request_pay({
+  m_redirect_url : 'thegajago://success',
+  app_scheme : 'thegajago'
+}, function(rsp) {
+
+  alert(msg);
+});
+          </code></pre>
+          <aside class="notes">
+            하나는 나이스페이같은 몇몇 PG사의 결과 리턴 방식인 redirect_url을 통한 앱의 재호출과 또 하나는 아래 보이는 function(rsp) 이하의 콜백 방식입니다. 카카오페이 페이코등이 여기에 해당합니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>구현의 필수요소 -
+            <font color="orange">Intent filter (android)</font>
+          </h3>
+          <div>
+            <img src="/images/payment/intent-filter.png" height="500"/>
+          </div>
+
+          <aside class="notes">
+            그렇기 때문에 몇가지 필수적인 설정요소나 기능이 필요한데 그중 하나는 안드로이드의 인텐트 필터등록입니다. 인텐트 필터는 다른 앱이 특정 앱스킴이나 액션, 예를 들면 웹뷰에서 tel이라는 프로토콜로 전화번호를 넣고 링크를 걸면 전화앱이 실행되듯이 내가 액션을 할 수 있는 앱입니다를 등록하는 단계입니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>구현의 필수요소 -
+            <font color="orange">Bridge</font>
+          </h3>
+          <pre><code class="hljs">
+IMP.request_pay({
+    ... 중략
+}, function(rsp) {
+    if ( rsp.success ) {
+      ... 성공
+    } else {
+      ... 실패
+    }
+
+    웹뷰에서 엡에게 전달 할 수 있는 인터페이스 * Bridge
+});
+          </code></pre>
+
+          <aside class="notes">
+            또하나는 콜백방식인 경우는 발생한 결과를 웹뷰에서 앱으로 전달할 브릿지를 필요로합니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>구현의 필수요소 -
+            <font color="orange">Bridge</font>
+          </h3>
+          <div>
+            <img src="/images/payment/bridge.png" height="500"/>
+          </div>
+
+          <aside class="notes">
+            이 또한 리액트 네이티브 웹뷰에서는 브릿지를 제공하고 있습니다. 브릿지의 동작 방법은 뒤에 설명합니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>구현의 필수요소 -
+            <font color="orange">동기적 핸들링(필터링)</font>
+          </h3>
+          <aside class="notes">
+            또한 동기적 핸들링 즉 필터링을 필요로 하게됩니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>WEBVIEW내의
+            <font color="orange">URL</font>이동</h3>
+          <div>
+            <pre><code class="hljs">
+location.href = 'http://';
+location.href = 'https://..';
+location.href = 'tel://..';
+location.href = 'kakaotalk://';
+location.href = 'payco://';
+location.href = 'shinhan-sr-ansimclick://';
+            </code></pre>
+          </div>
+          <aside class="notes">
+            웹뷰에선 js나 a태그등의 엘리먼트를 통해 url변경이 일어나기 때문에 해당 url이 실행가능한지 판단해야 하는 경우가 생깁니다. 예를들어 신한앱카드나 페이코처럼 앱이 설치되어있지 않은 상태에서 위의 script가 실행이 되면 다음 화면과 같은 오류 메시지를 받게됩니다.
+
+          </aside>
+        </section>
+
+        <section>
+          <h3>URL은 실행 가능한 것인가?</h3>
+          <div>
+            <img src="/images/payment/unknown-url-scheme.png" height="500"/>
+          </div>
+          <aside class="notes">
+            어플리케이션 사용자든 제작자든 누구도 이 화면을 그대로 보길 원하지 않을겁니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>구현의 필수요소 -
+            <font color="orange">FILTERING</font>
+          </h3>
+          <pre><code class="hljs">
+webview.addEventListener('onurlchange', function(webview){
+
+  if(canOpenURL(webview.getURL())) {
+
+    return true;
+  }
+  else {
+
+    return false;
+  }
+});
+          </code></pre>
+
+          <aside class="notes">
+            그렇게하기 위해선 URL이 실행가능한 상태인가를 판단후 웹뷰의 동작을 이어나갈지 아니면 멈출지를 핸들링 할 수 있는 어떠한 동기적 api가 필요로 하게 됩니다. 지금 보시는 코드는 상상속의 예제 같은겁니다.
+          </aside>
+        </section>
+
+        <section>
+          <div style="word-wrap: break-word;">
+            modalPopup.<font color="black" style='background-color:#ffffff'>location.href</font>=b.url;else if("payco.landing"===p)f.communicate({result:"proxy.landing",imp_uid:b.imp_uid,request_id:l}),f.modalPopup.close(),f.modalPopup=null;else{m=r.length;for(a=m-1;0<=a;a--)
+          </div>
+          <aside class="notes">
+            실제로 아임포트 스크립트나 PG사에서 내려오는 코드들을 열어보면 다음처럼 script내에서 url 변경을 하도록 하고 있습니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>RN WebView Component</h3>
+          <table width="80%" class="table-25px">
+            <thead>
+              <tr>
+                <th></th>
+                <th>IOS</th>
+                <th>ANDROID</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>이벤트</th>
+                <td>onShouldStartLoadWithRequest</td>
+                <td>onNavigationStateChange</td>
+              </tr>
+              <tr>
+                <th>필터링</th>
+                <td>O</td>
+                <td>X</td>
+              </tr>
+              <tr>
+                <th>정확성</th>
+                <td>X</td>
+                <td>X</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <aside class="notes">
+            지금 보시는 화면처럼 리액트 네이티브에선 ios의 onShouldStartLoadWithRequest와 android의 onNavigationStateChange 인터페이스가 존재하는데 IOS는 필터링이 비교적 되는 반면 android는 필터링이 전혀 되질 않습니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>비동기(필터링 X)</h3>
+          <div>
+            <img src="/images/payment/async-event.png" height="400"/>
+          </div>
+          <div>
+            https://facebook.github.io/react-native/docs/native-modules-android.html
+          </div>
+          <div class="fragment">
+            <font color="red">No ways to skip error message</font>
+          </div>
+          <aside class="notes">
+            이유는 리액트 네이티브의 안드로이드 브릿지는 비동기적이기 때문입니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>정확성 X</h3>
+          <div>
+            모든 URL 변경 이벤트 X
+          </div>
+          <aside class="notes">
+            모든 URL 변경 이벤트를 잡아내질 못합니다. 이는 뒤에서 다시 설명합니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>IOS</h3>
+          <div>스크립트 로딩 허용</div>
+          <div>APPSCHEME -&gt; WHITELIST</div>
+          <div>postMessage 패치</div>
+
+          <aside class="notes">
+            일단 IOS는 몇가지 설정과 코드패치로 결제가 가능한 상태로 만들 수 있습니다. IOS는 어차피 앱이 설치가 안되어있으면 알아서 마켓으로 잘 이동을 시켜주기때문입니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>IOS - 스크립트 로딩 허용</h3>
+          <div>Info.plist (Property List) 수정</div>
+          <div>
+            <img src="/images/payment/plist1.png"/>
+          </div>
+          <aside class="notes">
+            react native로 프로젝트를 생성하면 생기는 각 플랫폼별 디렉토리에서 ios디렉토리로 이동하여 info.plist를 다음과 같이 편집하여 외부의 스크립트 즉 각 pg사별 로딩 스크립트들을 실행할 수 있도록 합니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>IOS - WHITELIST</h3>
+          <div>
+            iOS 9 &gt;&gt;&gt; 도입, 경고
+          </div>
+          <div>
+            <font color="orange">iOS 10 &gt;&gt;&gt; 차단</font>
+          </div>
+          <div>
+            <img src="/images/payment/plist2.png"/>
+          </div>
+          <aside class="notes">
+            WHITELIST등록은 ios 9부터 생긴개념인데 10 버전에서 강제화된 내용입니다. PG사에서 제공하는 모든 카드앱 스킴을 미리알고 여기에 등록해야합니다. 아임포트에서 내용은 제공을 해줍니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>IOS - postMessage 패치</h3>
+          <div>
+            <img src="/images/payment/fetch-post-message.png" height="500"/>
+          </div>
+          <aside class="notes">
+            아직 정확한 이유파악은 안되나 pg사의 스크립트가 react native의 브릿지역할을 하는 postMessage api를 override하는 경우가 있는 것 같습니다. 기본적으로 브릿지를 시도할 경우 다음과 같은 빨간에러를 만날 수 있습니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>postMessage -
+            <font color="orange">Bridge</font>
+          </h3>
+          <div class="row">
+            <div class="col-md-12">
+              <pre><code class="hljs">IMP.request_pay({
+    ... 중략
+}, function(rsp) {
+
+    //웹뷰에서 엡에게 전달 할 수 있는 인터페이스 * Bridge
+    window.postMessage(JSON.stringify(rsp));
+});
+              </code></pre>
+            </div>
+            <div class="col-md-12">
+              <pre><code class="hljs">export default class IAmPort extends Component {
+  _onMessage(e) {
+
+    var res = JSON.parse(e.nativeEvent.data);
+  }
+  render() {
+    return (
+      <WebView onMessage={this._onMessage}></WebView>
+    );
+  }
+}
+              </code></pre>
+            </div>
+          </div>
+          <aside class="notes">
+            방금 말씀 드린 브릿지의 개념입니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>IOS - postMessage 패치</h3>
+          <div>https://github.com/facebook/react-native/issues/10865</div>
+          <pre><code class="hljs">patchPostMessage() {
+
+  const patchFunction = function () {
+    var original = window.postMessage;
+    var patched = function (message, tOrigin, transfer) {
+      original(message, tOrigin, transfer);
+    };
+    ...생략
+  };
+  return '(' + String(patched) + ')();';
+}
+
+render () => (
+  <WebView injectJavascript={this.patchPostMessage}></WebView>
+)
+          </code></pre>
+          <aside class="notes">
+            구글에서 몇번의 검색으로 찾은 patch 방법입니다.
+          </aside>
+        </section>
+
+        <section data-background="/images/payment/hell2.jpg">
+          <h3>ANDROID - HELL</h3>
+          <aside class="notes">
+            지옥의 시작입니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>react-native-webview-android</h3>
+          <div>
+            <img src="/images/payment/react-native-webview-android.png"/>
+          </div>
+          <aside class="notes">
+            안드로이드에서 이벤트가 잘 발생하지 않는 문제때문에 고민을 하다가 찾은 모듈입니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>react-native-webview-android</h3>
+          <div>더 많은 이벤트 동작</div>
+          <aside class="notes">
+            기본제공하는 리액트 네이티브 웹뷰보다 비교적 상세히 URL변경을 잡아냅니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3 style="text-transform: capitalize;">onNavigationStateChange - FRAME (X)</h3>
+          <div style="text-align:center">
+
+            <div style="display:inline-block;width:400px;border:2px solid #ffffff;padding:20px">
+              Document
+              <div style="border:2px solid #ffffff;padding:20px">&lt;iframe&gt; - UI</div>
+              <div style="border:2px solid #ffffff;margin-top:20px;padding:20px;">&lt;iframe&gt; - ACTION</div>
+            </div>
+          </div>
+          <aside class="notes">
+            그러나 리액트 네이티브 웹뷰와 똑같은 문제가 있는데 frame내에서의 액션으로 발생하는 URL변경 사항은 잡아내지 못합니다. 해당 보시는 그림은 한 PG사가 Document 내에서 iframe을 두개두고 하나는 UI를 앱을 호출 하는 액션같은 경우는 아래의 iframe에서 동작시키는 경우를 표현해봤습니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>Into the android native</h3>
+          <pre><code class="hljava">protected class EventWebClient extends WebViewClient {
+
+  @Override
+  public boolean shouldOverrideUrlLoading (WebView view, String url) {
+
+      return handleUri(view, url);
+  }
+
+  @Override
+  public WebResourceResponse shouldInterceptRequest (WebView view, WebResourceRequest request) {
+
+      final Uri uri = request.getUrl();
+      handleUri(view, uri.toString());
+
+      return super.shouldInterceptRequest(view, request);
+  }
+
+  @Override
+  public void onLoadResource (WebView view, String url) {
+
+      handleUri(view, url);
+  }
+
+  private boolean handleUri(final WebView view, String url) {
+
+      Log.i("handleUri", "URL =" + url);
+
+      if(url.contains("intent")){
+
+          view.stopLoading();
+          return false;
+      }
+      else if(url.contains("thegajago")){
+
+          view.stopLoading();
+          return false;
+      }
+
+      return true;
+  }
+
+  @Override
+  public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+
+      view.stopLoading();
+  }
+          </code></pre>
+          <aside class="notes">
+            결국에 많은 고민을 하다 안드로이드 네이티브 단에서 핸들링을 해야됨을 느끼고 react-native-webview-android를 수정하여 해결 했습니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>그런데..</h3>
+          <div>react-native-webview-android - Bridge(X)</div>
+          <aside class="notes">
+            그런데 간과한 문제 한가지가 있었는데 당연히 제공할 줄 알았던 브릿지의 부재였습니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>Maintainer</h3>
+          <div>
+            <img src="/images/payment/dont-need.png" height="500"/>
+          </div>
+          <aside class="notes">
+            엎친데 덮친격으로 메인테이너는 이젠 내꺼쓰지말고 리액트네이티브에서 제공하는 웹뷰가 더 좋으니까 그것을 쓰라고 이야기하고 있습니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>export android native module</h3>
+          <div>
+            <ul>
+              <li>(WebView &gt;&gt;&gt; App) 브릿지 구현</li>
+              <li>I'mport sdk와 연결</li>
+            </ul>
+          </div>
+          <aside class="notes">
+            결국엔 리액트 네이티브가 제공하는 인터페이스와 메뉴얼을 따라 안드로이드 네이티브로 구현하여 모듈을 export하는 것으로 방향을 결정하였습니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>export android native module</h3>
+          <div>
+            <img src="/images/payment/react-native-module1.png" height="400"/>
+          </div>
+          <aside class="notes">
+            메뉴얼에는 자기들이 모듈 export 인터페이스를 왜 만들었는지 변명을 하고 있습니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>export android native module</h3>
+          <div>
+            <img src="/images/payment/react-native-module2.png" width="1000"/>
+          </div>
+          <aside class="notes">
+            기본적으로 toast 모듈을 example로 제공하고 있는데 한번 따라해보면 생각보다 어렵지 않다고 느낄 수 있습니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>export android native module</h3>
+          <div>
+            리액트 네이티브 웹뷰 사용(X)
+          </div>
+          <div>
+            안드로이드 웹뷰를 상속받아 &gt;&gt;&gt;
+            <font color="orange">아임포트 웹뷰 개발</font>
+          </div>
+          <aside class="notes">
+            결국에는 android webview를 상속 받아 아임포트 웹뷰를 개발 하고 아임포트에서 제공하는 안드로이드 sdk와 연결후 브릿지를 구현해서 네이티브 모듈을 개발 했습니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>react-native-iamport</h3>
+          <div>
+            https://github.com/jeongjuwon/react-native-iamport
+          </div>
+          <div>
+            <img src="/images/payment/github.png"/>
+          </div>
+          <aside class="notes">
+            해당 모듈은 github에 공개되어있습니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>react-native-iamport</h3>
+          <div>
+            https://npmjs.com/react-native-iamport
+          </div>
+          <div>
+            <img src="/images/payment/npm.png"/>
+          </div>
+          <aside class="notes">
+            npm에도 등록이 된 상태입니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>react-native-iamport</h3>
+          <div>
+            <img src="/images/payment/react-native-iamport.png"/>
+          </div>
+          <aside class="notes">
+            실제 프로젝트 내에선 다음처럼 간단하게 사용이 가능합니다.
+          </aside>
+        </section>
+
+        <section>
+          <h3>후기</h3>
+          <ul>
+            <li>처음엔 네이티브 요소를 모르므로 삽질을 많이 한다.</li>
+            <li>모듈 개발이 생각보다 어렵지 않다(안드로이드)</li>
+            <li>IOS도 해보면 될 것 같다(익숙치 않은 문법)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>질문</h3>
+        </section>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          {
+            src: 'plugin/markdown/marked.js'
+          }, {
+            src: 'plugin/markdown/markdown.js'
+          }, {
+            src: 'plugin/notes/notes.js',
+            async: true
+          }, {
+            src: 'plugin/highlight/highlight.js',
+            async: true,
+            callback: function () {
+              hljs.initHighlightingOnLoad({});
+            }
+          }
+        ]
+      });
+
+      function getNewInstance(config) {
+
+        config = config || {};
+        var Anchor = config.Anchor || ["Right", "Left"];
+        var Connector = config.Connector || ["Straight"];
+
+        return jsPlumb.getInstance({
+          PaintStyle: {
+            strokeWidth: 6,
+            stroke: "orange",
+            outlineStroke: "black",
+            outlineWidth: 1
+          },
+          Connector: Connector,
+          Endpoint: [
+            "Blank", {}
+          ],
+          EndpointStyle: {
+            fill: "orange"
+          },
+          Anchor: Anchor
+        });
+      }
+
+      jsPlumb.repaintEverything();
+      Reveal.addEventListener('slidechanged', function (event) {
+        // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+        if (event.currentSlide.id == 'react-native-with-iamport') {
+
+          var instance = getNewInstance();
+
+          instance.connect({source: "diagram-react-native-app", target: "diagram-react-native-webview", scope: "someScope1"});
+
+          instance.connect({source: "diagram-react-native-webview", target: "diagram-react-native-iamport", scope: "someScope2"});
+
+          instance.connect({source: "diagram-react-native-iamport", target: "diagram-react-native-pg1", scope: "someScope3"});
+          instance.connect({source: "diagram-react-native-iamport", target: "diagram-react-native-pg2", scope: "someScope4"});
+          instance.connect({source: "diagram-react-native-iamport", target: "diagram-react-native-pg3", scope: "someScope5"});
+          instance.connect({source: "diagram-react-native-iamport", target: "diagram-react-native-webview", scope: "someScope6"});
+        }
+      });
+    </script>
+  </body>
+</html>

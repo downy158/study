@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://localhost:8000/payment.html#/4 -->
+<html class=" js no-mobile desktop no-ie chrome chrome55 root-section gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch retina fontface domloaded w-1440 gt-240 gt-320 gt-480 gt-640 gt-768 gt-800 gt-1024 gt-1280 lt-1680 lt-1920 no-portrait landscape" id="payment-page"><script type="text/javascript" src="chrome-extension://iigcccneenmnplhhfhaeahiofeeeifpn/scripts/cordova.js"></script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+    <link href="./reveal.js_files/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./reveal.js_files/reveal.css">
+    <link rel="stylesheet" href="./reveal.js_files/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="./reveal.js_files/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? 'css/print/pdf.css'
+        : 'css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    </script><link rel="stylesheet" type="text/css" href="./reveal.js_files/paper.css">
+
+    <script src="./reveal.js_files/jquery.min.js"></script>
+    <script src="./reveal.js_files/bootstrap.min.js"></script>
+    <script src="./reveal.js_files/jsplumb.min.js"></script>
+    <style>
+      .background-black-font {
+
+        padding-left: 10px;
+        padding-right: 10px;
+        background-color: #000000;
+      }
+      .round-box {
+        display: inline-block;
+        background-color: #cccccc;
+        color: #111111;
+        padding: 20px !important;
+        font-size: 20px !important;
+        width: 150px;
+      }
+
+      table.table-25px {
+
+        font-size: 25px;
+        text-align: center;
+      }
+
+      table.table-25px td,
+      table.table-25px th {
+
+        text-align: center;
+      }
+
+    </style><script type="text/javascript" src="./reveal.js_files/marked.js"></script><script type="text/javascript" src="./reveal.js_files/markdown.js"></script>
+  <script type="text/javascript" src="./reveal.js_files/notes.js"></script><script type="text/javascript" src="./reveal.js_files/highlight.js"></script><style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head>
+  <body cz-shortcut-listen="true">
+    <div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+      <div class="slides" style="width: 960px; height: 700px; zoom: 1.00543;">
+        <section data-background="http://cdn.pcwallart.com/images/lord-of-the-rings-gollum-wallpaper-3.jpg" data-background-image="http://cdn.pcwallart.com/images/lord-of-the-rings-gollum-wallpaper-3.jpg" hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
+          <h3>React Native
+            <font color="orange">I'mport 연동</font>
+          </h3>
+          <div>- 뜻밖의 여정 -</div>
+
+          <aside class="notes">
+            오늘 소개드릴 내용은 미쳐 아임포트를 믿었던 제가 생각지 못한 삽질기입니다.
+          </aside>
+        </section>
+
+        <section data-background="/images/payment/iamport-main.png" data-background-image="/images/payment/iamport-main.png" hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
+          <p>
+            </p><div class="fragment  background-black-font visible" data-fragment-index="0">.........</div>
+            <div class="fragment  background-black-font visible" data-fragment-index="1">
+              <font color="orange">
+                -_-;;
+              </font>
+            </div>
+            <div class="fragment background-black-font visible" data-fragment-index="2">ㅋㅋㅋㅋㅋㅋㅋㅋ</div>
+          <p></p>
+
+          <aside class="notes">
+            아임포트는 쉬운 결제연동을 지원합니다.
+          </aside>
+        </section>
+
+        <section id="react-native-with-iamport" hidden="" aria-hidden="true" class="past" style="top: 182px; display: block;">
+
+          <div id="diagram-react-native-app" class="round-box" style="position:absolute;top:115px;left:0px;">App</div>
+
+          <div id="diagram-react-native-webview" class="round-box" style="position:absolute;top:115px;left:230px;">WebView</div>
+
+          <div id="diagram-react-native-iamport" class="round-box" style="position:absolute;top:115px;left:460px;">I'mport</div>
+
+          <div id="diagram-react-native-pg1" class="round-box" style="position:absolute;top:0px;left:690px;">나이스페이</div>
+          <div id="diagram-react-native-pg2" class="round-box" style="position:absolute;top:115px;left:690px;">카카오</div>
+          <div id="diagram-react-native-pg3" class="round-box" style="position:absolute;top:230px;left:690px;">페이코</div>
+
+          <aside class="notes">
+            아임포트는 쉬운 결제연동을 지원합니다.
+          </aside>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="past" style="top: 90px; display: block;">
+
+          <pre><code class="hljs groovy">
+var IMP = window.IMP; <span class="hljs-comment">// 생략가능</span>
+IMP.init(<span class="hljs-string">'iamport'</span>); <span class="hljs-comment">// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용</span>
+
+<span class="hljs-comment">/* 중략 */</span>
+
+<span class="hljs-comment">//onclick, onload 등 원하는 이벤트에 호출합니다</span>
+IMP.request_pay({
+    <span class="hljs-string">pg :</span> <span class="hljs-string">'inicis'</span>, <span class="hljs-comment">// version 1.1.0부터 지원.</span>
+    <span class="hljs-string">pay_method :</span> <span class="hljs-string">'card'</span>,
+    <span class="hljs-string">merchant_uid :</span> <span class="hljs-string">'merchant_'</span> + <span class="hljs-keyword">new</span> Date().getTime(),
+    <span class="hljs-string">name :</span> <span class="hljs-string">'주문명:결제테스트'</span>,
+    <span class="hljs-string">amount :</span> <span class="hljs-number">14000</span>,
+    <span class="hljs-string">buyer_email :</span> <span class="hljs-string">'iamport@siot.do'</span>,
+    <span class="hljs-string">buyer_name :</span> <span class="hljs-string">'구매자이름'</span>,
+    <span class="hljs-string">buyer_tel :</span> <span class="hljs-string">'010-1234-5678'</span>,
+    <span class="hljs-string">buyer_addr :</span> <span class="hljs-string">'서울특별시 강남구 삼성동'</span>,
+    <span class="hljs-string">buyer_postcode :</span> <span class="hljs-string">'123-456'</span>,
+    <span class="hljs-string">m_redirect_url :</span> <span class="hljs-string">'https://www.yourdomain.com/payments/complete'</span>,
+    <span class="hljs-string">app_scheme :</span> <span class="hljs-string">'iamportapp'</span>
+}, function(rsp) {
+    <span class="hljs-keyword">if</span> ( rsp.success ) {
+        var msg = <span class="hljs-string">'결제가 완료되었습니다.'</span>;
+        msg += <span class="hljs-string">'고유ID : '</span> + rsp.imp_uid;
+        msg += <span class="hljs-string">'상점 거래ID : '</span> + rsp.merchant_uid;
+        msg += <span class="hljs-string">'결제 금액 : '</span> + rsp.paid_amount;
+        msg += <span class="hljs-string">'카드 승인번호 : '</span> + rsp.apply_num;
+    } <span class="hljs-keyword">else</span> {
+        var msg = <span class="hljs-string">'결제에 실패하였습니다.'</span>;
+        msg += <span class="hljs-string">'에러내용 : '</span> + rsp.error_msg;
+    }
+
+    alert(msg);
+});
+          </code></pre>
+          <aside class="notes">
+            해당 스크립트는 아임포트를 실행하는 스크립트입니다. pg 와 pay_method 파라미터 그리고 그외의 구매내용에 대한 정보를 넘기면 두가지 방법으로 리턴을 하게 됩니다.
+          </aside>
+        </section>
+
+        <section class="present" style="top: 156px; display: block;">
+          <h3>두가지 방법</h3>
+          <pre><code class="hljs php">IMP.request_pay({
+  m_redirect_url : <span class="hljs-string">'thegajago://success'</span>,
+  app_scheme : <span class="hljs-string">'thegajago'</span>
+}, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(rsp)</span> </span>{
+
+  alert(msg);
+});
+          </code></pre>
+          <aside class="notes">
+            하나는 나이스페이같은 몇몇 PG사의 결과 리턴 방식인 m_redirect_url과 또 하나는 아래 보이는 function(rsp) 이하의 콜백 방식입니다. 카카오페이 페이코등이 여기에 해당합니다.
+          </aside>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 94.5px; display: block;">
+          <h3>구현의 필수요소 -
+            <font color="orange">Bridge</font>
+          </h3>
+          <pre><code class="hljs less">
+<span class="hljs-selector-tag">IMP</span><span class="hljs-selector-class">.request_pay</span>({
+    ... 중략
+}, function(rsp) {
+    <span class="hljs-selector-tag">if</span> ( rsp.success ) {
+      ... 성공
+    } else {
+      ... 실패
+    }
+
+    웹뷰에서 엡에게 전달 할 수 있는 인터페이스 * Bridge
+});
+          </code></pre>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 271px; display: block;">
+          <h3>구현의 필수요소 -
+            <font color="orange">동기적 핸들링</font>
+          </h3>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>WEBVIEW내의
+            <font color="orange">script</font>동작</h3>
+          <div>
+            <pre><code class="hljs glsl">
+<span class="hljs-keyword">location</span>.href = 'http:<span class="hljs-comment">//';</span>
+<span class="hljs-keyword">location</span>.href = 'https:<span class="hljs-comment">//..';</span>
+<span class="hljs-keyword">location</span>.href = 'tel:<span class="hljs-comment">//..';</span>
+<span class="hljs-keyword">location</span>.href = 'kakaotalk:<span class="hljs-comment">//';</span>
+<span class="hljs-keyword">location</span>.href = 'payco:<span class="hljs-comment">//';</span>
+<span class="hljs-keyword">location</span>.href = 'shinhan-sr-ansimclick:<span class="hljs-comment">//';</span>
+            </code></pre>
+          </div>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>URL은 실행 가능한 것인가?</h3>
+          <div>
+            <img src="./reveal.js_files/unknown-url-scheme.png" height="500">
+          </div>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>구현의 필수요소 -
+            <font color="orange">FILTERING</font>
+          </h3>
+          <pre><code class="hljs php">
+webview.addEventListener(<span class="hljs-string">'onurlchange'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(webview)</span></span>{
+
+  <span class="hljs-keyword">if</span>(canOpenURL(webview.getURL())) {
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+  }
+  <span class="hljs-keyword">else</span> {
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+  }
+});
+          </code></pre>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <div style="word-wrap: break-word;">
+            modalPopup.<font color="black" style="background-color:#ffffff">location.href</font>=b.url;else if("payco.landing"===p)f.communicate({result:"proxy.landing",imp_uid:b.imp_uid,request_id:l}),f.modalPopup.close(),f.modalPopup=null;else{m=r.length;for(a=m-1;0&lt;=a;a--)
+          </div>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>RN WebView Component</h3>
+          <table width="80%" class="table-25px">
+            <thead>
+              <tr>
+                <th></th>
+                <th>IOS</th>
+                <th>ANDROID</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>이벤트</th>
+                <td>onShouldStartLoadWithRequest</td>
+                <td>onNavigationStateChange</td>
+              </tr>
+              <tr>
+                <th>필터링</th>
+                <td>O</td>
+                <td>X</td>
+              </tr>
+              <tr>
+                <th>정확성</th>
+                <td>X</td>
+                <td>X</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>IOS</h3>
+          <div>스크립트 로딩 허용</div>
+          <div>APPSCHEME -&gt; WHITELIST</div>
+          <div>postMessage 패치</div>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>IOS - 스크립트 로딩 허용</h3>
+          <div>Info.plist (Property List) 수정</div>
+          <div>
+            <img src="./reveal.js_files/plist1.png">
+          </div>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>IOS - WHITELIST</h3>
+          <div>
+            iOS 9 &gt;&gt;&gt; 도입, 경고
+          </div>
+          <div>
+            <font color="orange">iOS 10 &gt;&gt;&gt; 차단</font>
+          </div>
+          <div>
+            <img src="./reveal.js_files/plist2.png">
+          </div>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>IOS - postMessage 패치</h3>
+          <div>
+            <img src="./reveal.js_files/fetch-post-message.png" height="500">
+          </div>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>postMessage -
+            <font color="orange">Bridge</font>
+          </h3>
+          <div class="row">
+            <div class="col-md-12">
+              <pre><code class="hljs javascript">IMP.request_pay({
+    ... 중략
+}, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">rsp</span>) </span>{
+
+    <span class="hljs-comment">//웹뷰에서 엡에게 전달 할 수 있는 인터페이스 * Bridge</span>
+    <span class="hljs-built_in">window</span>.postMessage(<span class="hljs-built_in">JSON</span>.stringify(rsp));
+});
+              </code></pre>
+            </div>
+            <div class="col-md-12">
+              <pre><code class="hljs scala">export <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IAmPort</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  _onMessage(e) {
+
+    <span class="hljs-keyword">var</span> res = <span class="hljs-type">JSON</span>.parse(e.nativeEvent.data);
+  }
+  render() {
+    <span class="hljs-keyword">return</span> (
+      &lt;webview onmessage=<span class="hljs-string">"{this._onMessage}"</span>&gt;&lt;/webview&gt;
+    );
+  }
+}
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>IOS - postMessage 패치</h3>
+          <pre><code class="hljs php">patchPostMessage() {
+
+  <span class="hljs-keyword">const</span> patchFunction = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">var</span> original = window.postMessage;
+    <span class="hljs-keyword">var</span> patched = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(message, tOrigin, transfer)</span> </span>{
+      original(message, tOrigin, transfer);
+    };
+    ...생략
+  };
+  <span class="hljs-keyword">return</span> <span class="hljs-string">'('</span> + String(patched) + <span class="hljs-string">')();'</span>;
+}
+
+render () =&gt; (
+  &lt;webview injectjavascript=<span class="hljs-string">"{this.patchPostMessage}"</span>&gt;&lt;/webview&gt;
+)
+          </code></pre>
+        </section>
+
+        <section data-background="/images/payment/hell2.jpg" data-background-image="/images/payment/hell2.jpg" hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>ANDROID - HELL</h3>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>react-native-webview-android</h3>
+          <div>
+            <img src="./reveal.js_files/react-native-webview-android.png">
+          </div>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>react-native-webview-android</h3>
+          <div>더 많은 이벤트 동작</div>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3 style="text-transform: capitalize;">onNavigationStateChange - FRAME (X)</h3>
+          <div style="text-align:center">
+            <div style="display:inline-block;width:400px;border:2px solid #ffffff;padding:20px">
+              <div style="border:2px solid #ffffff;padding:20px">&lt;iframe&gt; - UI</div>
+              <div style="border:2px solid #ffffff;margin-top:20px;padding:20px;">&lt;iframe&gt; - ACTION</div>
+            </div>
+          </div>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>비동기</h3>
+          <div>
+            <img src="./reveal.js_files/async-event.png" height="400">
+          </div>
+          <div class="fragment" data-fragment-index="0">
+            No ways to skip error message
+          </div>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>Into the android native</h3>
+          <pre><code class="hljava hljs aspectj"><span class="hljs-keyword">protected</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EventWebClient</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">WebViewClient</span> </span>{
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">shouldOverrideUrlLoading</span> <span class="hljs-params">(WebView view, String url)</span> </span>{
+
+      <span class="hljs-function"><span class="hljs-keyword">return</span> <span class="hljs-title">handleUri</span><span class="hljs-params">(view, url)</span></span>;
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-function">WebResourceResponse <span class="hljs-title">shouldInterceptRequest</span> <span class="hljs-params">(WebView view, WebResourceRequest request)</span> </span>{
+
+      <span class="hljs-keyword">final</span> Uri uri = request.getUrl();
+      handleUri(view, uri.toString());
+
+      <span class="hljs-function"><span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.<span class="hljs-title">shouldInterceptRequest</span><span class="hljs-params">(view, request)</span></span>;
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">onLoadResource</span> <span class="hljs-params">(WebView view, String url)</span> </span>{
+
+      handleUri(view, url);
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">handleUri</span><span class="hljs-params">(<span class="hljs-keyword">final</span> WebView view, String url)</span> </span>{
+
+      Log.i(<span class="hljs-string">"handleUri"</span>, <span class="hljs-string">"URL ="</span> + url);
+
+      <span class="hljs-keyword">if</span>(url.contains(<span class="hljs-string">"intent"</span>)){
+
+          view.stopLoading();
+          <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+      }
+      <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(url.contains(<span class="hljs-string">"thegajago"</span>)){
+
+          view.stopLoading();
+          <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+      }
+
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">onReceivedError</span><span class="hljs-params">(WebView view, <span class="hljs-keyword">int</span> errorCode, String description, String failingUrl)</span> </span>{
+
+      view.stopLoading();
+  }
+          </code></pre>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>그런데..</h3>
+          <div>react-native-webview-android - Bridge(X)</div>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>Maintainer</h3>
+          <div>
+            <img src="./reveal.js_files/dont-need.png" height="500">
+          </div>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>export android native module</h3>
+          <div>
+            <ul>
+              <li>(WebView &gt;&gt;&gt; App) 브릿지 구현</li>
+              <li>I'mport sdk와 연결</li>
+            </ul>
+          </div>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>export android native module</h3>
+          <div>
+            <img src="./reveal.js_files/react-native-module1.png" height="400">
+          </div>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>export android native module</h3>
+          <div>
+            <img src="./reveal.js_files/react-native-module2.png" width="1000">
+          </div>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>react-native-iamport</h3>
+          <div>
+            https://github.com/jeongjuwon/react-native-iamport
+          </div>
+          <div>
+            <img src="./reveal.js_files/github.png">
+          </div>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>react-native-iamport</h3>
+          <div>
+            <img src="./reveal.js_files/react-native-iamport.png">
+          </div>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+          <h3>React Native 모듈 익스포트</h3>
+          <div>
+            <img src="./reveal.js_files/react-native-iamport.png">
+          </div>
+        </section>
+      </div>
+    <div class="backgrounds"><div class="slide-background past" data-background-hash="http://cdn.pcwallart.com/images/lord-of-the-rings-gollum-wallpaper-3.jpgnullnullnullnullnullnullnullnull" style="display: none;"></div><div class="slide-background past" data-background-hash="/images/payment/iamport-main.pngnullnullnullnullnullnullnullnull" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" data-background-hash="/images/payment/hell2.jpgnullnullnullnullnullnullnullnull" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 185.806px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px 1px 1px 1px);">
+          두가지 방법
+          IMP.request_pay({
+  m_redirect_url : 'thegajago://success',
+  app_scheme : 'thegajago'
+}, function(rsp) {
+
+  alert(msg);
+});
+          
+          
+            하나는 나이스페이같은 몇몇 PG사의 결과 리턴 방식인 m_redirect_url과 또 하나는 아래 보이는 function(rsp) 이하의 콜백 방식입니다. 카카오페이 페이코등이 여기에 해당합니다.
+          
+        </div></div>
+
+    <script src="./reveal.js_files/head.min.js"></script>
+    <script src="./reveal.js_files/reveal.js"></script>
+
+    <script>
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          {
+            src: 'plugin/markdown/marked.js'
+          }, {
+            src: 'plugin/markdown/markdown.js'
+          }, {
+            src: 'plugin/notes/notes.js',
+            async: true
+          }, {
+            src: 'plugin/highlight/highlight.js',
+            async: true,
+            callback: function () {
+              hljs.initHighlightingOnLoad({});
+            }
+          }
+        ]
+      });
+
+      function getNewInstance(config) {
+
+        config = config || {};
+        var Anchor = config.Anchor || ["Right", "Left"];
+        var Connector = config.Connector || ["Straight"];
+
+        return jsPlumb.getInstance({
+          PaintStyle: {
+            strokeWidth: 6,
+            stroke: "orange",
+            outlineStroke: "black",
+            outlineWidth: 1
+          },
+          Connector: Connector,
+          Endpoint: [
+            "Blank", {}
+          ],
+          EndpointStyle: {
+            fill: "orange"
+          },
+          Anchor: Anchor
+        });
+      }
+
+      jsPlumb.repaintEverything();
+      Reveal.addEventListener('slidechanged', function (event) {
+        // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+        if (event.currentSlide.id == 'react-native-with-iamport') {
+
+          var instance = getNewInstance();
+
+          instance.connect({source: "diagram-react-native-app", target: "diagram-react-native-webview", scope: "someScope1"});
+
+          instance.connect({source: "diagram-react-native-webview", target: "diagram-react-native-iamport", scope: "someScope2"});
+
+          instance.connect({source: "diagram-react-native-iamport", target: "diagram-react-native-pg1", scope: "someScope3"});
+          instance.connect({source: "diagram-react-native-iamport", target: "diagram-react-native-pg2", scope: "someScope4"});
+          instance.connect({source: "diagram-react-native-iamport", target: "diagram-react-native-pg3", scope: "someScope5"});
+          instance.connect({source: "diagram-react-native-iamport", target: "diagram-react-native-webview", scope: "someScope6"});
+        }
+      });
+    </script>
+  <script src="./reveal.js_files/livereload.js" async="" defer=""></script>
+
+<div id="window-resizer-tooltip" style="display: block;"><a href="http://localhost:8000/payment.html#" title="Edit settings"></a><span class="tooltipTitle">Window size: </span><span class="tooltipWidth" id="winWidth">1440</span> x <span class="tooltipHeight" id="winHeight">900</span><br><span class="tooltipTitle">Viewport size: </span><span class="tooltipWidth" id="vpWidth">1440</span> x <span class="tooltipHeight" id="vpHeight">782</span></div></body></html>
